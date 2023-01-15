@@ -7,9 +7,14 @@ import { CreateStudentDto } from './types/create-student.dto';
 export class StudentResolver {
   constructor(private readonly studentService: StudentService) {}
 
-  @Query(() => String)
-  testQuery() {
-    return 'test';
+  @Query(() => [StudentType])
+  getAllStudents() {
+    return this.studentService.getAllStudents();
+  }
+
+  @Query(() => StudentType)
+  student(@Args('id') id: string) {
+    return this.studentService.getStudentById(id);
   }
 
   @Mutation(() => StudentType)

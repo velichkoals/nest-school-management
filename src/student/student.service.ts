@@ -12,6 +12,14 @@ export class StudentService {
     private readonly studentRepository: Repository<Student>,
   ) {}
 
+  async getStudentById(id: string) {
+    return await this.studentRepository.findOne({ where: { id } });
+  }
+
+  async getAllStudents() {
+    return await this.studentRepository.find();
+  }
+
   async createStudent(dto: CreateStudentDto) {
     const student = this.studentRepository.create({
       id: uuid(),
