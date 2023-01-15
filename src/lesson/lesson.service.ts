@@ -15,6 +15,11 @@ export class LessonService {
   async getLessonById(id: string): Promise<Lesson> {
     return await this.lessonRepository.findOne({ where: { id } });
   }
+
+  async getAllLessons(): Promise<Lesson[]> {
+    return await this.lessonRepository.find();
+  }
+
   async createLesson(dto: CreateLessonDto): Promise<Lesson> {
     const lesson = await this.lessonRepository.create({
       id: uuid(),
