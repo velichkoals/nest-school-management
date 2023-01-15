@@ -23,7 +23,6 @@ export class LessonService {
   async createLesson(dto: CreateLessonDto): Promise<Lesson> {
     const lesson = await this.lessonRepository.create({
       id: uuid(),
-      students: [],
       ...dto,
     });
     return await this.lessonRepository.save(lesson);
